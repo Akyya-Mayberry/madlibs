@@ -1,14 +1,11 @@
-<!doctype html>
-<html>
-<head>
-  <title>A Compliment</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %}A Compliment{% endblock %}
+{% block body %}
     <p>Hi {{ person }}! I think you're {{ compliment }}!</p>
     <form action="/game"><label>Do you want to play a game?</label>
         <input type="radio" name="game" value="yes"><label>yes</label>
         <input type="radio" name="game" value="no"><label>no</label>
         <input type="submit">
     </form>
-</body>
-</html>
+{% endblock %}       

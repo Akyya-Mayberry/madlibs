@@ -1,9 +1,6 @@
-<!doctype html>
-<html>
-<head>
-  <title>A Game</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}A Game{% endblock %}
+{% block body %}
     <h1>Let's Get Started</h1>
     <form action="/madlib"><label>Enter a person name: </label>
         <input type="text" name="random-person">
@@ -25,5 +22,4 @@
         <br>
         <input type="submit">
     </form>
-</body>
-</html>
+{% endblock %}
