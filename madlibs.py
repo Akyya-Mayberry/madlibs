@@ -50,16 +50,37 @@ def show_game_form():
     else:
         return render_template("goodbye.html")
 
-@app.route('/madlib')
+@app.route('/madlib', methods=["GET", "POST"])
 def show_madlib():
     """Shows Madlib"""
     
-    name = request.args.get("random-person")
-    favorite_color = request.args.get("fav-color")
-    some_noun = request.args.get("noun")
-    adj = request.args.get("adjective")
+    #names
+    a_job = request.form.get("job")
 
-    return render_template('madlib.html', person=name, color=favorite_color, noun=some_noun, adjective=adj)
+    #adjectives
+    adj1 = request.form.getlist("adjective1")
+    adj1 = (", ").join(adj1)
+    adj2 = request.form.get("adjective2")
+
+
+    #nouns
+    some_noun1 = request.form.get("noun1")
+    some_noun2 = request.form.get("noun2")
+    some_noun3 = request.form.get("noun3")
+    some_noun4 = request.form.get("noun4")
+
+    #verbs
+    some_verb1 = request.form.get("verb1")
+    some_verb2 = request.form.get("verb2")
+    some_verb3 = request.form.get("verb3")
+
+    if request.method == 'POST':
+        return render_template('madlib.html', job=a_job, noun=some_noun1, noun_two=some_noun2,
+                            noun_three=some_noun3, noun_four=some_noun4, adj=adj1, adj_two=adj2, 
+                            verb=some_verb1, verb_two=some_verb2, verb_three=some_verb3)
+    elif request.method == 'GET':
+        return "get method"
+
 
 
 if __name__ == '__main__':
